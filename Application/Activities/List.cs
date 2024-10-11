@@ -25,6 +25,7 @@ namespace Application.Activities
             }
             public async Task<List<Activity>> Handle(Query request, CancellationToken cancellationToken) {
                 // throw new NotImplementedException();
+                /* OLD DELAY FUNCTION
                 try {
                     for (var i =0; i <1; i++)
                     {
@@ -36,6 +37,7 @@ namespace Application.Activities
                 catch (System.Exception) {
                     _logger.LogInformation("Task was cancelled");
                 }
+                */
                 //cancellationTokesn alllow the server to stop the requests if a user exits out of the request
                 return await _context.Activities.ToListAsync();
             }
