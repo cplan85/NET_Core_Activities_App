@@ -26,7 +26,7 @@ namespace Application.Activities
             public async Task<List<Activity>> Handle(Query request, CancellationToken cancellationToken) {
                 // throw new NotImplementedException();
                 try {
-                    for (var i =0; i <10; i++)
+                    for (var i =0; i <1; i++)
                     {
                         cancellationToken.ThrowIfCancellationRequested();
                         await Task.Delay(1000, cancellationToken);
