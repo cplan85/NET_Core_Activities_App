@@ -25,7 +25,12 @@ namespace Application.Activities
 
             public async Task<Activity> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Activities.FindAsync(request.Id);
+                var activity = await _context.Activities.FindAsync(request.Id);
+
+                // if(activity == null) return NotFound();
+                // if we used Exceptions they would be heavier rather than Http error responses
+                // We use result objects
+                return activity;
             }
             
         }
