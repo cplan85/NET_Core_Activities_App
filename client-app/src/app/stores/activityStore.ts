@@ -20,6 +20,17 @@ export default class ActivityStore {
         
     }
 
+    get groupedActivities() {
+        return Object.entries(
+            this.activitiesByDate.reduce((activities, activity) => {
+                const date = activity.date;
+                activities[date] = activities[date] ? [...activities[date], activity] :
+                [activity];
+                return activities;
+            }, {} as {[key: string]: Activity[]})
+        )
+    }
+
     //with an arrow function we don't have to bind to a component
     loadActivities = async () => {
         //non async code outside of the try catch block
