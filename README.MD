@@ -12,4 +12,11 @@
 - React-Calendar
 - React-DatePicker
 
+## .NET PACKAGES
+
+- API
+    - AspNetCore.Authentication.JwtBearer
+- DOMAIN
+    - AspNetCore.Identity.FrameWorkCore
+
 
