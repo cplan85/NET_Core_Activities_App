@@ -8,10 +8,10 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Persistence;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     //when we specify BaseApiController, this means that we get the dat ApiController and Route from BaseApiController
     public class ActivitiesController: BaseApiController
     {
