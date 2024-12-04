@@ -3,7 +3,6 @@ import { createContext, useContext } from "react";
 import CommonStore from "./commonStores";
 import UserStore from "./userStore";
 import ModalStore from "./modalStores";
-import { Modal } from "semantic-ui-react";
 
 interface Store {
     activityStore: ActivityStore;

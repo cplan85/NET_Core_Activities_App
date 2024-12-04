@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
@@ -32,7 +32,7 @@ useEffect(() => {
         <ActivityDetailedChat />
         </Grid.Column>
         <Grid.Column width= {6}>
-          <ActivityDetailedSidebar />
+          <ActivityDetailedSidebar activity={activity} />
         </Grid.Column>
        </Grid>
     )
