@@ -93,4 +93,20 @@ export default class ProfileStore {
             console.log(error)
         }
     }
+
+    updateProfile = async (profile: Partial<Profile>) => {
+        try {
+            await agent.Profiles.update(profile);
+            runInAction(() => {
+                if (profile.displayName) {
+                    let updatedActivity = {...this.profile, ...profile};
+                    this.profile = updatedActivity as Profile;
+                }
+            })
+    
+        }
+        catch (error) {
+            console.log(error);
+            }
+        }
 }
