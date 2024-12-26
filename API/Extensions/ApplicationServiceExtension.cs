@@ -22,7 +22,11 @@ namespace API.Extensions
         });      
         services.AddCors(opt => {
         opt.AddPolicy("CorsPolicy", policy => {
-        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+        policy
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials()
+        .WithOrigins("http://localhost:3000");
         });
         });      
         
@@ -36,6 +40,7 @@ namespace API.Extensions
         services.AddScoped<IUserAccessor, UserAccessor>();
         services.AddScoped<IPhotoAccessor, PhotoAccessor>();
         services.Configure<CloudinarySettings>(configuration.GetSection("Cloudinary"));
+        services.AddSignalR();
 
         return services;
         }

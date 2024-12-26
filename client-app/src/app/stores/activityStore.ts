@@ -202,6 +202,10 @@ updateActivity = async (activity: ActivityFormValues) => {
             runInAction(() => this.loading = false);
         }
     }
+
+    clearSelectedActivity = () => {
+        this.selectedActivity = undefined;
+    }
 }
 
 
