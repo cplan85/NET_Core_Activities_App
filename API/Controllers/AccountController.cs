@@ -38,13 +38,7 @@ namespace API.Controllers
 
             if (result) 
             {
-                return new UserDto
-                {
-                    DisplayName = user.DisplayName,
-                    Image = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
-                    Token = _tokenService.CreateToken(user),
-                    UserName = user.UserName
-                };
+               return CreateUserDto(user);
             }
 
             return Unauthorized();

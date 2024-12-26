@@ -13,7 +13,7 @@ export default class CommonStore {
             () => this.token, 
             token => {
                 if (token) {
-                    localStorage.setItme('jwt', token)
+                    localStorage.setItem('jwt', token)
                 } else {
                     localStorage.removeItem('jwt')
                 }
