@@ -39,7 +39,7 @@ export interface IActivity {
     isGoing: boolean = false;
     host?: Profile;
     isCancelled: boolean = false;
-    attendees?: Profile[]
+    attendees?: Profile[] = [];
   }
 
   export class ActivityFormValues {

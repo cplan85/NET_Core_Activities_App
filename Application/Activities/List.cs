@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Core;
+using Application.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -22,9 +22,11 @@ namespace Application.Activities
             private readonly DataContext _context;
             private readonly ILogger<List> _logger;
             private readonly IMapper _mapper;
+            private readonly IUserAccessor _userAccessor;
 
-            public Handler(DataContext context, ILogger<List> logger, IMapper mapper)
+            public Handler(DataContext context, ILogger<List> logger, IMapper mapper, IUserAccessor userAccessor)
             {
+                _userAccessor = userAccessor;
                 _context = context;
                 _logger = logger;
                 _mapper = mapper;
@@ -48,7 +50,8 @@ namespace Application.Activities
 
                 var activities = await _context.Activities
                 //ProjectTo coudl also be provided by the Select key word
-                .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider)
+                 .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider, 
+                new {currentUserName = _userAccessor.GetUsername()})
                 .ToListAsync(cancellationToken);
 
                 return Result<List<ActivityDto>>.Success(activities);
