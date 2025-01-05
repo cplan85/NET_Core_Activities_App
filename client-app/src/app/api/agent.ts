@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { router } from "../router/Routes";
 import { store } from "../stores/store";
 import { User, UserFormValues } from "../models/user";
-import { Profile } from "../models/profile";
+import { Profile, UserActivity } from "../models/profile";
 import { PaginatedResults } from "../models/pagination";
 
 const sleep = (delay: number) => {
@@ -13,7 +13,7 @@ const sleep = (delay: number) => {
     })
 }
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 axios.interceptors.request.use(config => {
     const token = store.commonStore.token;
@@ -22,7 +22,7 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(async response => {
-
+        if (import.meta.env.DEV) await sleep(1000);
         await sleep(1000);
         const pagination = response.headers['pagination'];
         if (pagination) {
@@ -108,7 +108,8 @@ const Profiles = {
     deletePhoto: (id: string) => request.del(`/photos/${id}`),
     update: (profile: Partial<Profile>) => request.put(`/profiles`, profile),
     updateFollowing: (username: string) => request.post(`/follow/${username}`, {}),
-    listFollowings: (username: string, predicate: string) => request.get<Profile[]>(`/follow/${username}?predicate=${predicate}`)
+    listFollowings: (username: string, predicate: string) => request.get<Profile[]>(`/follow/${username}?predicate=${predicate}`),
+    listActivities: (username: string, predicate: string) => request.get<UserActivity[]>(`/profiles/${username}/activities?predicate=${predicate}`)
 }
 
 const agent = {

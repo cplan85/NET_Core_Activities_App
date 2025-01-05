@@ -4,7 +4,6 @@ import CommonStore from "./commonStores";
 import UserStore from "./userStore";
 import ModalStore from "./modalStores";
 import ProfileStore from "./profileStore";
-import { Profile } from "../models/profile";
 import CommentStore from "./commentStore";
 
 interface Store {

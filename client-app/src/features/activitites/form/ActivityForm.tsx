@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Header, Segment } from "semantic-ui-react";
 import { ActivityFormValues } from "../../../app/models/activity";
 import { useStore } from "../../../app/stores/store";
@@ -72,6 +72,7 @@ useEffect(() => {
                           showTimeSelect
                           timeCaption="time"
                           dateFormat='MMMM d, yyyy h:mm aa'
+                          showMonthYearDropdown={true}
                          />
                          <Header content='Location Details' sub color='teal' />
                          <MyTextInput placeholder='City' name='city'/>

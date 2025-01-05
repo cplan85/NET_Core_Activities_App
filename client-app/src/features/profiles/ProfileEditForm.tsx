@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Button, Container, Header, Segment } from "semantic-ui-react";
+import { Button, Container } from "semantic-ui-react";
 import { useStore } from "../../app/stores/store";
 import { observer } from "mobx-react-lite";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 import { Formik, Form } from "formik";
 import * as Yup from 'yup';
@@ -17,8 +16,7 @@ interface Props {
 
 export default observer( function ProfileEditForm({profile, updateProfile}: Props) {
 const {profileStore} = useStore();
-const {loadProfile, loading} = profileStore;
-const navigate = useNavigate();
+const {loading} = profileStore;
 
 //const [activity, setProfile] = useState<Partial<Profile>>(new Profile());
 

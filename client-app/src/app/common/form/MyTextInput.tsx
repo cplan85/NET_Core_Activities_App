@@ -1,5 +1,4 @@
 import { useField } from "formik";
-import React from "react";
 import { Form, Label } from "semantic-ui-react";
 
 interface Props {
@@ -19,11 +18,5 @@ export default function MyTextInput(props: Props) {
             ) : null}
         </Form.Field>
     )
-        
-    
+      
 }
-
-{/* <FormField>
-<Field placeholder='Title' name='title' />
-<ErrorMessage name='title' render={error => <Label basic color='red' content={error} />} />
-</FormField> */}

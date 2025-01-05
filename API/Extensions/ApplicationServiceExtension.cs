@@ -18,7 +18,7 @@ namespace API.Extensions
           services.AddEndpointsApiExplorer();
           services.AddSwaggerGen();
           services.AddDbContext<DataContext>(Opt => {
-            Opt.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
+            Opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
         });      
         services.AddCors(opt => {
         opt.AddPolicy("CorsPolicy", policy => {

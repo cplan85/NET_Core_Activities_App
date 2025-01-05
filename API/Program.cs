@@ -1,6 +1,7 @@
 using API.Extensions;
 using API.Middleware;
 using API.SignalR;
+using Application.Photos;
 using Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -45,8 +46,13 @@ app.UseCors("CorsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
 
+// searches through wwwroot file to search for files such as index.html
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 app.MapHub<ChatHub>("/chat");
+app.MapFallbackToController("Index", "Fallback");
 
 //this scope will be destroyed afterwards
 using var scope = app.Services.CreateScope();

@@ -1,9 +1,8 @@
 import { observer } from 'mobx-react-lite';
-import React, { SyntheticEvent, useState } from 'react';
-import { Button, Card, Grid, Header, Image, Tab } from 'semantic-ui-react';
-import { Photo, Profile } from '../../app/models/profile';
+import { useState } from 'react';
+import { Button, Grid, Header, Tab } from 'semantic-ui-react';
+import { Profile } from '../../app/models/profile';
 import { useStore } from '../../app/stores/store';
-import PhotoUploadWidget from '../../app/common/imageUpload/PhotoUploadWidget';
 import ProfileEditForm from './ProfileEditForm';
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 }
 
 export default observer (function ProfileAbout({profile}: Props) {
-    const {profileStore: {isCurrentUser, loading, updateProfile}} = useStore();
+    const {profileStore: {isCurrentUser, updateProfile}} = useStore();
     const [editProfileMode, setEditPhotoMode] = useState(false);
 
     
