@@ -31,6 +31,7 @@ var app = builder.Build();
 // beginning of implementing middleware 
 app.UseMiddleware<ExceptionMiddleware>();
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     //THE APP IS ALREADY USING THIS EXCEPTION PAGE
@@ -38,8 +39,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else 
+{
+    app.Use(async (context, next) => 
+    {
+        context.Response.Headers.Append("Strict-Transport-Security", "max-age=31536000");
+        await next.Invoke();
+    });
+}
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseCors("CorsPolicy");
 // Authenticate - is it a valid user, then if so - then do authorization
