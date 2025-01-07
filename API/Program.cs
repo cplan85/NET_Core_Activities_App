@@ -32,6 +32,22 @@ var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
 // Configure the HTTP request pipeline.
 
+app.UseXContentTypeOptions();
+app.UseReferrerPolicy(opt => opt.NoReferrer());
+app.UseXXssProtection(opt => opt.EnabledWithBlockMode());
+app.UseXfo(opt => opt.Deny());
+//this allows us to whitesource those sources of content
+//all of this is allowed
+app.UseCsp(opt => opt
+.BlockAllMixedContent()
+.StyleSources(s => s.Self().CustomSources("https://fonts.googleapis.com/"))
+.FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com/", "data:"))
+.FormActions(s => s.Self())
+.FrameAncestors(s => s.Self())
+.ImageSources(s => s.Self().CustomSources("blob:", "https://res.cloudinary.com"))
+.ScriptSources(s => s.Self())
+);
+
 if (app.Environment.IsDevelopment())
 {
     //THE APP IS ALREADY USING THIS EXCEPTION PAGE

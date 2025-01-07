@@ -4,7 +4,7 @@
 
 ### Built With
 
-.NET 7.0, React 18 with Typescript and Mobx and Semantic-UI
+.NET 8.0, React 18 with Typescript and Mobx and Semantic-UI
 
 #### Additional Stack
 - Formik/Yup
@@ -17,7 +17,10 @@
 
 - API
     - AspNetCore.Authentication.JwtBearer
+    - FluentValidation.AspNetCore
+- APPLICATION
+    - MediatR
 - DOMAIN
     - AspNetCore.Identity.FrameWorkCore
-
-
+- PERSISTENCE 
+    - Microsoft.EntityFrameworkCore.SqlServer
